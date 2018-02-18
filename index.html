@@ -4,47 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="./style.css">
   <title>NumberAPI project</title>
 </head>
 <body>
-  <p>Enter a number or click random:</p>
-  <input type="number" id="numberInput">
-  <input type="submit" id="randBtn" value="random">
-  <p id="fact"></p>
+  <div class="container">
+      <p>Enter a number or click random:</p>
+      <input type="number" id="numberInput">
+      <input type="submit" id="randBtn" value="random">
+      <p id="fact"></p>
+  </div>
 
-  <script>
-    function rando(max) {
-      return (Math.floor(Math.random() * Math.floor(max))+1);   // returns a 'random' number btwn 1 and max inclusive
-    }
-
-    let randomButton = document.querySelector("#randBtn");
-    randomButton.addEventListener('click',randomNumber);
-
-    let numberInput = document.querySelector("#numberInput");
-    numberInput.addEventListener('input',action);
-
-    function randomNumber() {
-      let r = rando(100);
-      numberInput.value = r;
-      action();
-    }
-
-    function action(){
-      let number = numberInput.value;
-      let fact = document.querySelector('#fact');
-      console.log(number);
-      let xhr = new XMLHttpRequest();
-      xhr.open('GET', 'http://numbersapi.com/'+number);
-      xhr.onload = function (){
-        if (this.status == 200 && number !=""){
-          fact.innerHTML = this.responseText;
-        }
-        else {
-          fact.innerHTML = '';
-        }
-      }
-      xhr.send();
-    };
-  </script>
+  <script src="./logic.js"></script>
 </body>
 </html>
